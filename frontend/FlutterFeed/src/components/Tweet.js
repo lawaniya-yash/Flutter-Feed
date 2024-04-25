@@ -6,6 +6,7 @@ import { CiHeart } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 import axios from "axios";
 import { TWEET_API_END_POINT } from '../utils/constant';
+import { USER_API_END_POINT } from '../utils/constant';
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { getRefresh } from '../redux/tweetSlice';
@@ -29,6 +30,23 @@ const Tweet = ({ tweet }) => {
             console.log(error);
         }
     }
+
+    const bookmarkHandler = async(id)=>{
+        try{
+            const res = await axios.put(`${USER_API_END_POINT}/bookmark/${id}`, { id: user?._id }, {
+                withCredentials: true
+            })
+            console.log(res);
+            dispatch(getRefresh());
+            toast.success(res.data.message);
+
+        }
+        catch(error){
+            toast.success(error.response.data.message);
+            console.log(error);
+        }
+    }
+
     const deleteTweetHandler = async (id) => {
         try {
             axios.defaults.withCredentials = true;
@@ -69,10 +87,10 @@ const Tweet = ({ tweet }) => {
                                 <p>{tweet?.like?.length}</p>
                             </div>
                             <div className='flex items-center'>
-                                <div className='p-2 hover:bg-yellow-200 rounded-full cursor-pointer'>
+                                <div onClick={() => bookmarkHandler(tweet?._id)} className='p-2 hover:bg-yellow-200 rounded-full cursor-pointer'>
                                     <CiBookmark size="24px" />
                                 </div>
-                                <p>0</p>
+                                <p>{user?.bookmarks.length}</p>
                             </div>
                             {
                                 user?._id === tweet?.userId && (

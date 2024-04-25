@@ -68,11 +68,12 @@ const Login = () => {
           <img className='ml-5' width={"350px"} src="https://i.postimg.cc/Z5KjBVKN/fflogo-2.jpg" alt="flutterfeed-logo" />
         </div>
         <div>
-          <div className='my-5'>
-            <h1 className='font-bold text-white text-6xl'>Happening now.</h1>
+          <div className='my-1'>
+            
+             <img className='mr-5' width={"400px"} src="https://i.postimg.cc/kGB0pvPH/ff.jpg" alt="flutterfeed-logo" />
           </div>
           <h1 className='mt-4 mb-2 text-2xl text-white font-bold'>{isLogin ? "Login" : "Singup"}</h1>
-          <form onSubmit={submitHandler} className='flex flex-col w-[55%]'>
+          <form onSubmit={submitHandler} className='flex flex-col w-[60%]'>
             {
               !isLogin && (<>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder='Name' className="outline-blue-500 border border-gray-800 px-3 py-2 rounded-full my-1 font-semibold" />
