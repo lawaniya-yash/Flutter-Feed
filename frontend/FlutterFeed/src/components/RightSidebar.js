@@ -28,7 +28,7 @@ const RightSidebar = ({ otherUsers }) => {
                 </div>
                 <div>
                   <Link to={`/profile/${user?._id}`}>
-                    <button className='px-4 py-1 bg-black hover:bg-gray-800 text-white rounded-full'>Profile</button>
+                    <button className='px-4 py-1 bg-black hover:bg-[#d62965] border border-white text-white rounded-full'>Profile</button>
                   </Link>
                 </div>
               </div>
